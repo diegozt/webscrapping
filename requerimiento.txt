@@ -1,0 +1,5 @@
+selenium
+pytesseract==0.3.10
+opencv-python==4.7.0.72
+Pillow==9.5.0
+webdriver-manager
