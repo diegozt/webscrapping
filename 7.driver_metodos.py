@@ -17,7 +17,7 @@ options.add_argument('start-maximized')             # maximizar la pantalla
 options.add_argument('--disable-extensiones')       # impide que el navegador cargue y ejecute extensiones
 options.add_experimental_option('excludeSwitches', ['enable-logging'])  # elimina los mensajes de consola
 
-driver = webdriver.Chrome(service=Service(ChromeDriverManager().install()), options=options)
+driver = webdriver.Chrome(options=options)
 
 url = 'https://www.sbs.gob.pe/'
 driver.get(url)

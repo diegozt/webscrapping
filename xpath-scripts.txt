@@ -1,0 +1,35 @@
+1. Funciones de Texto:
+text(): Selecciona el texto contenido dentro de un nodo.
+Ejemplo: //parrafo/text()
+
+2. Funciones de String:
+contains(string, substring): Devuelve true si la cadena contiene la subcadena.
+Ejemplo: //titulo[contains(text(), 'XML')]
+starts-with(string, substring): Devuelve true si la cadena comienza con la subcadena.
+Ejemplo: //nombre[starts-with(text(), 'J')]
+string-length(string): Devuelve la longitud de la cadena.
+Ejemplo: //parrafo[string-length(text()) > 100]
+
+3. Funciones Numéricas:
+sum(node-set): Devuelve la suma de los valores numéricos en el conjunto de nodos.
+Ejemplo: sum(//precio)
+round(number), floor(number), ceiling(number): Realizan redondeo, hacia abajo y hacia arriba respectivamente.
+Ejemplo: //precio[ceiling(text()) > 50]
+
+4. Funciones de Fecha y Hora:
+current-date(), current-time(), current-dateTime(): Devuelven la fecha, la hora y la fecha con la hora actual, respectivamente.
+
+5. Funciones de Filtro:
+position(): Devuelve la posición del nodo en su contexto.
+Ejemplo: //parrafo[position() = last()] seleccionará el último párrafo.
+last(): Devuelve la última posición dentro del contexto actual.
+
+6. Funciones de Agrupación:
+distinct-values(node-set): Devuelve valores únicos de un conjunto de nodos.
+
+7. Funciones de Expresiones Regulares:
+matches(string, pattern): Devuelve true si la cadena coincide con el patrón.
+Ejemplo: //texto[matches(text(), '^\\d{3}$')]
+8
+	normalize-space 	-> 	quita espacios en blanco	
+	translate		-> 	reeplaza valores

@@ -1,0 +1,86 @@
+structured and unstructured 
+user privileages
+
+installation
+python library installation
+overview of mysql
+db connctivity using python
+database queries in mysql
+perform db operation using python code
+
+
+A table is a collection of related data entries, and it consists of columns and rows.
+A column holds specific information about every record in the table.
+A record (or row) is each individual entry that exists in a table.
+
+
+
+Creating a New Database
+ALTER TABLE table_name ADD column_name datatype;
+INSERT INTO table_name (column1, column2, column3, ...) VALUES (value1, value2, value3, ...);
+INSERT INTO Customers (EmployeID, FirstName, LastName, Designation, Location) VALUES (21,"Dhoni","MS","Batsman","ranchi");
+INSERT INTO table_name VALUES (value1, value2, value3, ...);
+Insert into Employe values(20,"Sachin","Tendulkar","Batsman","Mumbai");
+
+
+import mysql.connector
+from getpass import getpass
+try:
+    mydb=mysql.connector.connect(
+    host="localhost",
+    user=input("Enter username: "),
+    password=getpass("Enter password: "),
+    database="Employee_details"
+    )
+except:
+    print("Error connecting to MySQL")
+mycursor=mydb.cursor()
+mycursor.execute("show databases;")
+for db in mycursor:
+    print(db)
+
+sql_create="CREATE TABLE Employee(EmployeID int,FirstName VARCHAR(50),LastName VARCHAR(50),Designation VARCHAR(50),Location VARCHAR(50));"
+sql_alter="ALTER TABLE Employee MODIFY COLUMN Location VARCHAR(60)";
+sql_insert = "INSERT INTO Employe (EmployeID, FirstName, LastName, Designation, Location) VALUES (%s, %s,%s,%s,%s)"
+val_insert = [(20,"Sachin","Tendulkar","Batsman","Mumbai"),
+              (35, "Virat","Kohli","All-rounder","Delhi"),
+              (41, "Rahul","Dravid","Bowler","Chennai"),
+              (78, "Anil","Kumble","Wicketkeeper","Indore"),
+              (95, "Ganguly","Kolkata","Bowler","Hyderabad"),
+              (100, "Ajay","Agarkar","Bowler","Pune")]
+sql_delete ="DELETE FROM Employe WHERE EmployeID=20"
+sql_truncate="TRUNCATE TABLE Employee"
+sql_drop="DROP TABLE Employee"
+#mycursor.execute(sql_drop)
+#mycursor.execute(sql_insert, val_insert)
+mycursor.executemany(sql_insert, val_insert)
+mydb.commit()
+mycursor.execute("Select * from Employe")
+for db in mycursor:
+    print(db)
+mycursor.close()
+
+
+
+
+sql_create="CREATE TABLE Employee(EmployeID int,FirstName VARCHAR(50),LastName VARCHAR(50),Designation VARCHAR(50),Location VARCHAR(50));"
+sql_alter="ALTER TABLE Employee MODIFY COLUMN Location VARCHAR(60)";
+sql_insert = "INSERT INTO Employe (EmployeID, FirstName, LastName, Designation, Location) VALUES (%s, %s,%s,%s,%s)"
+val_insert = [(20,"Sachin","Tendulkar","Batsman","Mumbai"),
+              (35, "Virat","Kohli","All-rounder","Delhi"),
+              (41, "Rahul","Dravid","Bowler","Chennai"),
+              (78, "Anil","Kumble","Wicketkeeper","Indore"),
+              (95, "Ganguly","Kolkata","Bowler","Hyderabad"),
+              (100, "Ajay","Agarkar","Bowler","Pune")]
+sql_delete ="DELETE FROM Employe WHERE EmployeID=20"
+sql_truncate="TRUNCATE TABLE Employee"
+sql_drop="DROP TABLE Employee"
+#mycursor.execute(sql_drop)
+#mycursor.execute(sql_insert, val_insert)
+mycursor.executemany(sql_insert, val_insert)
+mycursor.execute("Select * from Employe")
+for db in mycursor:
+    print(db)
+
+
+
